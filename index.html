@@ -1,209 +1,762 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rodgers Owino | Portfolio</title>
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rodgers Owino · ICT Portfolio</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- ===== STYLE.CSS (embedded for single-file demo) ===== -->
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0f1a;   /* deep black-blue */
+            color: #eef3fc;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ---------- REUSABLE ANIMATIONS ---------- */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 8px rgba(0, 120, 255, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(0, 120, 255, 0.6); }
+            100% { box-shadow: 0 0 8px rgba(0, 120, 255, 0.2); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* ---------- BUTTONS ---------- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.85rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            background: transparent;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #1a5fff, #0077ff);
+            box-shadow: 0 8px 20px rgba(0, 80, 255, 0.3);
+            border: none;
+        }
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 80, 255, 0.5);
+        }
+
+        .btn-outline {
+            border: 1.5px solid #3a8cff;
+            color: #c0ddff;
+        }
+        .btn-outline:hover {
+            background: rgba(58, 140, 255, 0.12);
+            border-color: #7ab6ff;
+            transform: translateY(-3px);
+        }
+
+        .btn-download {
+            background: #0f2a4a;
+            border: 1px solid #1a5fff;
+            color: #b8d6ff;
+        }
+        .btn-download:hover {
+            background: #1a3a6a;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 80, 255, 0.3);
+        }
+
+        /* ---------- HEADER / NAV ---------- */
+        header {
+            background: rgba(11, 15, 26, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid rgba(0, 120, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #3a8cff, #7ac7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo i { -webkit-text-fill-color: #3a8cff; margin-right: 6px; }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: #c8ddff;
+            transition: 0.3s;
+            position: relative;
+            font-size: 1rem;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3a8cff;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover::after { width: 100%; }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: #8ab8ff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .hamburger:hover { color: #fff; }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .hero-content h1 span {
+            background: linear-gradient(135deg, #3a8cff, #7ac7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.3rem;
+            color: #b0ccff;
+            margin: 1.2rem 0 1.8rem;
+            border-left: 4px solid #3a8cff;
+            padding-left: 1.2rem;
+        }
+        .hero-badge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-top: 2rem;
+            color: #9abbee;
+        }
+        .hero-badge i { color: #3a8cff; margin-right: 6px; }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .avatar-circle {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at 30% 30%, #132a4b, #09111f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #1a5fff;
+            animation: glowPulse 5s infinite ease-in-out;
+        }
+        .avatar-circle i {
+            font-size: 8.5rem;
+            color: #b0d4ff;
+            filter: drop-shadow(0 0 20px #1a5fff);
+        }
+
+        /* ---------- SECTION TITLES ---------- */
+        .section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(58, 140, 255, 0.06);
+        }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 2.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #1a5fff, #00a6ff);
+            border-radius: 4px;
+        }
+
+        /* ---------- ABOUT ---------- */
+        .about-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-text {
+            flex: 2;
+            min-width: 280px;
+        }
+        .about-text p {
+            font-size: 1.15rem;
+            color: #c8daff;
+            margin-bottom: 1.5rem;
+        }
+        .about-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+        .about-highlight div {
+            background: rgba(20, 45, 85, 0.3);
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid #1a4a7a;
+            font-weight: 500;
+        }
+
+        /* ---------- SKILLS (progress bars) ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 3rem;
+        }
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+        .skill-item .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #1a2a4a;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1a5fff, #4a9eff);
+            border-radius: 30px;
+            width: 0%;
+            transition: width 1.2s ease;
+        }
+
+        /* ---------- PROJECTS ---------- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        .project-card {
+            background: rgba(16, 28, 52, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            border: 1px solid rgba(58, 140, 255, 0.15);
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .project-card:hover {
+            transform: translateY(-12px);
+            border-color: #3a8cff;
+            box-shadow: 0 20px 40px rgba(0, 80, 255, 0.2);
+            background: rgba(22, 40, 75, 0.7);
+        }
+        .project-card i {
+            font-size: 2.4rem;
+            color: #4a9eff;
+            margin-bottom: 0.8rem;
+        }
+        .project-card h3 { font-size: 1.5rem; margin-bottom: 0.3rem; }
+        .project-card p { color: #b8d0f0; margin-bottom: 1rem; }
+        .project-tag {
+            display: inline-block;
+            background: rgba(58, 140, 255, 0.15);
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            border: 1px solid #1a5fff50;
+            color: #aac6ff;
+        }
+
+        /* ---------- EDUCATION / CERT ---------- */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .edu-item {
+            background: rgba(12, 25, 50, 0.5);
+            padding: 1.8rem 1.5rem;
+            border-radius: 24px;
+            border-left: 5px solid #1a5fff;
+            backdrop-filter: blur(4px);
+        }
+        .edu-item h4 { font-size: 1.3rem; }
+        .edu-item p { color: #b0caf5; }
+
+        /* ---------- CONTACT FORM ---------- */
+        .contact-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(16, 30, 60, 0.6);
+            border: 1px solid #1a3a6a;
+            border-radius: 40px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s;
+            margin-bottom: 1.2rem;
+            outline: none;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #3a8cff;
+            box-shadow: 0 0 12px rgba(58, 140, 255, 0.2);
+        }
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+            border-radius: 24px;
+        }
+        .contact-form .btn { width: auto; }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .social-links a {
+            background: rgba(20, 45, 90, 0.3);
+            width: 56px;
+            height: 56px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #b8d4ff;
+            border: 1px solid #1a4a7a;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            background: #1a5fff40;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 80, 255, 0.2);
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #070b14;
+            padding: 2.5rem 0;
+            text-align: center;
+            color: #6580b0;
+            border-top: 1px solid #1a2a4a;
+        }
+        footer i { color: #3a8cff; }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-sub { border-left: none; padding-left: 0; }
+            .hero-badge { justify-content: center; }
+            .avatar-circle { width: 240px; height: 240px; }
+            .avatar-circle i { font-size: 6rem; }
+            .contact-row { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 1rem;
+                margin-top: 1rem;
+                background: #0b141f;
+                padding: 1.5rem;
+                border-radius: 30px;
+                border: 1px solid #1a3a6a;
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .section-title { font-size: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1.2rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .avatar-circle { width: 180px; height: 180px; }
+            .avatar-circle i { font-size: 4.5rem; }
+        }
+
+        /* reveal helper (intersection) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">
-      Rodgers Owino
+<!-- ===== HEADER / NAV ===== -->
+<header>
+    <div class="container nav-container">
+        <div class="logo"><i class="fas fa-graduation-cap"></i>Rodgers<span style="-webkit-text-fill-color:#fff;">.</span></div>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </div>
+</header>
 
-    <nav>
-      <ul class="nav-links">
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#Education">Education</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#blogs">Blogs</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1 class="hero-title">Welcome to My Portfolio</h1>
-  </section>
-
-  <!-- HOME / INTRO -->
-  <section id="home" class="section active intro">
-    <h2>Hi, I’m Rodgers Owino — Data Analyst | ICT Professional</h2>
-    <p>
-      An ICT graduate with skills in Excel, SQL, C programming, and web development.
-      I enjoy building clean, functional digital solutions and data-driven systems
-      that simplify work and improve efficiency.
-    </p>
-  </section>
-
-  <!-- BUTTON GRID -->
-  <section class="buttons">
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certificates</a>
-    <a href="#contact">Contact</a>
-    <a href="#resume">Resume</a>
-    <a href="#blogs">Blogs</a>
-  </section>
-
-  <!-- SOCIAL LINKS -->
-  <section class="socials">
-    <a href="https://www.linkedin.com/in/rodgersowino" target="_blank" aria-label="LinkedIn">
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
-    <a href="mailto:rodgersowino48@gmail.com" aria-label="Email">
-      <i class="fa-solid fa-envelope"></i>
-    </a>
-    <a href="https://github.com/" target="_blank" aria-label="GitHub">
-      <i class="fa-brands fa-github"></i>
-    </a>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about" class="section about">
-    <div class="about-container">
-      <h2>About Me</h2>
-      <div class="about-content">
-        <img src="profile.jpg" alt="" class="profile-img">
-        <div class="about-text">
-          <h3>Rodgers Owino</h3>
-          <p><Strong>ICT Graduate|Aspiring Data analysts| Web Developer</Strong></p>
-          <p>
-         Motivated ICT Diploma Graduate and Data Science & Analytics student with hands-on
-experience in ERP systems support, data management, and digital operations within a
-manufacturing environment.
-Currently working as a Data Clerk in a large manufacturing setup, supporting system-driven
-workflows through accurate data entry, reporting, record digitization, and cross-departmental
-collaboration. Experienced in supporting ICT teams, maintaining data integrity, generating
-analytical reports, and improving system-based processes.
-Possesses a strong foundation in ICT support, databases (MySQL & DBMS), data analysis
-(Excel & Power BI), basic programming, and web technologies. Recognized for attention to
-detail, fast learning, reliability, and consistency, including being awarded Employee of the
-Month for system support excellence.
-Actively building a career in ICT support, data systems, ERP operations, and digital
-transformation across diverse industries.
-          </p>
-   
+<main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content animate-on-scroll">
+                <h1>Rodgers <span>Owino</span></h1>
+                <div class="hero-sub"><i class="fas fa-laptop-code" style="color:#3a8cff; margin-right:12px;"></i> ICT Graduate · Full-Stack Developer</div>
+                <p style="color:#b0ccff; font-size:1.1rem; max-width:500px;">Building scalable, human-centered solutions with a passion for cloud and AI.</p>
+                <div class="hero-badge">
+                    <span><i class="fas fa-map-pin"></i> Nairobi, KE</span>
+                    <span><i class="fas fa-briefcase"></i> 2+ years experience</span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Hire Me</a>
+                    <a href="#" class="btn btn-download" id="downloadCVBtn"><i class="fas fa-download"></i> Download CV</a>
+                </div>
+            </div>
+            <div class="hero-image animate-on-scroll delay-2">
+                <div class="avatar-circle">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+            </div>
         </div>
-        <!-- HERO SECTION -->
-        <section class="hero">
-    <h1 class="hero-title">What people says about me</h1>
-      </section>
+    </section>
 
-    <div class="testimonial">
-  <div class="testimonial active">
-        <h2 class="hero-text">Mr. Brian Midiwo- close friend & schoolmate</h2>
-
-    <p class="hero- hero-author">Rodgers consistently demonstrates remarkable motivation and reliability in everything he undertakes. He approaches each task with unwavering focus, a strong sense of responsibility, and a positive, can-do attitude. Beyond his technical skills, he is exceptionally adaptable, quickly learning new tools and strategies to achieve outstanding results. His dedication is matched by his professionalism and ability to collaborate effectively with others. Working alongside Rodgers is inspiring, as he brings both energy and thoughtful insight to every project, making him a truly dependable and driven individual.</p>
-  </div>
-    <div class="testimonial">
-  <div class="testimonial active">
-        <h2 class="hero-text">Mr. Kelvin Mwangi- Cyber security Associate</h2>
-<p class="hero- hero-author">Rodgers Owino is a highly disciplined and detail-oriented ICT professional with a strong grasp of data systems and digital operations. His ability to work with ERP systems, maintain data accuracy, and support ICT-driven workflows demonstrates both technical competence and reliability. Rodgers approaches tasks with focus, consistency, and a clear problem-solving mindset, making him a dependable team player in fast-paced technical environments. I highly recommend him for ICT, data, and digital systems roles.
-</p>
-  </div>
-</sectiion>
-        </section>
-        </section>
-<!-- RESUME -->
-          <section id="resume" class="section resume">
-<div class="resume-container">
-    <h2>Resume</h2>
-    <p class="resume-intro">
-      You can download my full resume to see my skills, education, and experience in detail.
-    </p>
-   <div class="resume-actions">
-      <!-- Download Resume Button -->
-      <a href="https://drive.google.com/file/d/1RYIiZbEMPawRSbNm_moNbJXayziESb5u/view?usp=drive_link"btn primary">
-        ⬇️ Download Resume
-      </a>
-    </div>
-  </div>
-</section>
-
-  <!-- PROJECTS SECTION -->
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <!-- Add your project cards here -->
-  </section>
-  
-  <!-- Blogs -->
-<section id="Blogs" class="section">
-    <h2>Blogs</h2>
-    <!-- Add your Blogs cards here -->
-  </section>
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-     <div class="contact-info">
-      <div class="contact-item">
-        <span class="contact-label">Phone</span>
-        <a href="tel:0710908348" "0753484666">0710 908 348/0753484666</a>
-      </div>
-
-      <div class="contact-item">
-        <span class="contact-label">Email</span>
-        <a href="mailto:royowino48@gmail.com" "rodgersowino48@gmail.com"</a>>royowino48@gmail.com/rodgersowino48@gmail.com</a>
-      </div>
-    </div>
-  </div>
-    <!-- Add contact form or details here -->
-  </section>
-  <!-- EDUCATION SECTION -->
-   <section id="Education" class="section #Education">
-    <div class="Education">
-      <h2>Education</h2>
-      <div class="Education">
-        <img src="profile.jpg" alt="" class="profile-img">
-        <div class="#Education">
-          <h3>Diploma in Data science</h3>
-          <p><em>Instituition</em></p>
-      
-           <p class="institution">Zetech University</p>
-      <p class="description">
-        Studied data analysis, statistics, SQL, and data visualization, focusing on
-        transforming data into actionable insights.
-          </p>
-          <p class="institution">Summit Institute</p>
-      <p class="description">
-       Gained a strong foundation in computer systems, networking, programming,
-        database management, and IT support.
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+        <div class="container about-wrap">
+            <div class="about-text reveal">
+                <h2 class="section-title" style="margin-bottom:1.2rem;">About Me</h2>
+                <p>I'm Rodgers Owino, an ICT graduate with a strong foundation in full-stack development, cloud computing, and AI. I enjoy turning complex problems into elegant, user-friendly solutions.</p>
+                <p>With experience in agile teams and a passion for continuous learning, I'm driven to create technology that makes a real impact.</p>
+                <div class="about-highlight">
+                    <div><i class="fas fa-check-circle" style="color:#3a8cff;"></i> BSc ICT · Dean's List</div>
+                    <div><i class="fas fa-trophy" style="color:#3a8cff;"></i> 2 Internship Awards</div>
+                </div>
+            </div>
+            <div style="flex:1; background: radial-gradient(circle at 20% 30%, #142a4a, #0a111f); padding:2.5rem 2rem; border-radius:40px; border:1px solid #1a4a7a; text-align:center;" class="reveal delay-2">
+                <i class="fas fa-quote-right" style="font-size:2.8rem; color:#3a8cff; opacity:0.4;"></i>
+                <p style="font-size:1.2rem; font-weight:300; margin:1rem 0;">“Code is poetry — and I love writing verses that scale.”</p>
+                <span style="color:#7fa5e0;"><i class="fas fa-map-marker-alt"></i> Remote · Nairobi</span>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- ===== SKILLS (progress bars) ===== -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title reveal">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item reveal delay-1">
+                    <div class="skill-label"><span>JavaScript / React</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="90"></div></div>
+                </div>
+                <div class="skill-item reveal delay-2">
+                    <div class="skill-label"><span>Node.js / Express</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-item reveal delay-3">
+                    <div class="skill-label"><span>Python (Django/Flask)</span><span>75%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="75"></div></div>
+                </div>
+                <div class="skill-item reveal delay-4">
+                    <div class="skill-label"><span>SQL / MongoDB</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="80"></div></div>
+                </div>
+                <div class="skill-item reveal delay-1">
+                    <div class="skill-label"><span>Docker / AWS</span><span>70%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="70"></div></div>
+                </div>
+                <div class="skill-item reveal delay-2">
+                    <div class="skill-label"><span>Git / CI/CD</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" data-width="85"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title reveal">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card reveal delay-1">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI Resume Parser</h3>
+                    <p>NLP tool that extracts and ranks skills from PDF resumes. Built with Python &amp; FastAPI.</p>
+                    <span class="project-tag"><i class="fas fa-code"></i> Python · AI</span>
+                </div>
+                <div class="project-card reveal delay-2">
+                    <i class="fas fa-store"></i>
+                    <h3>EcoShop Platform</h3>
+                    <p>Full-stack e-commerce with React, Node, Stripe. Real-time inventory &amp; sustainability metrics.</p>
+                    <span class="project-tag"><i class="fas fa-leaf"></i> MERN · Stripe</span>
+                </div>
+                <div class="project-card reveal delay-3">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Interactive dashboard for IoT sensor data, using D3.js, WebSockets, and Express.</p>
+                    <span class="project-tag"><i class="fas fa-chart-pie"></i> D3 · WebSocket</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EDUCATION & CERTIFICATIONS ===== -->
+    <section class="section" id="education">
+        <div class="container">
+            <h2 class="section-title reveal">Education &amp; Certifications</h2>
+            <div class="edu-grid">
+                <div class="edu-item reveal delay-1">
+                    <h4><i class="fas fa-university" style="color:#3a8cff;"></i> BSc ICT</h4>
+                    <p>University of Nairobi · 2020 – 2024</p>
+                    <p style="font-size:0.9rem; color:#8ab0e0;">First Class Honours · Dean's List</p>
+                </div>
+                <div class="edu-item reveal delay-2">
+                    <h4><i class="fas fa-certificate" style="color:#3a8cff;"></i> AWS Certified Cloud</h4>
+                    <p>Amazon Web Services · 2023</p>
+                    <p style="font-size:0.9rem; color:#8ab0e0;">Foundational &amp; Solutions Architect</p>
+                </div>
+                <div class="edu-item reveal delay-3">
+                    <h4><i class="fas fa-certificate" style="color:#3a8cff;"></i> Meta Backend Developer</h4>
+                    <p>Coursera · 2022</p>
+                    <p style="font-size:0.9rem; color:#8ab0e0;">Django, APIs, databases</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT + SOCIAL ===== -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Let's Connect</h2>
+            <div class="contact-row">
+                <div class="reveal">
+                    <form class="contact-form" id="contactForm">
+                        <input type="text" placeholder="Your Name" required />
+                        <input type="email" placeholder="Your Email" required />
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+                <div class="reveal delay-2">
+                    <h4 style="font-weight:400; margin-bottom:1rem;"><i class="fas fa-share-alt" style="color:#3a8cff;"></i>  Find me on</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div style="margin-top:2rem; color:#b0caf5;">
+                        <p><i class="fas fa-envelope" style="color:#3a8cff;"></i> rodgers.owino@ict.dev</p>
+                        <p><i class="fas fa-phone" style="color:#3a8cff;"></i> +254 700 123 456</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <p><i class="fas fa-graduation-cap"></i> Rodgers Owino · ICT Graduate · 2026</p>
+        <p style="font-size:0.9rem; margin-top:0.3rem; color:#4a6a9a;">Built with <i class="fas fa-heart" style="color:#3a8cff;"></i> · Blue &amp; Black theme</p>
     </div>
-  </section>
+</footer>
 
-    
+<!-- ===== JAVASCRIPT (script.js) ===== -->
+<script>
+    (function() {
+        "use strict";
 
+        // ---------- HAMBURGER TOGGLE ----------
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        // close on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
 
-  <!-- JS FOR SECTION NAVIGATION -->
-  <script>
-    const links = document.querySelectorAll(".nav-links a");
-    const sections = document.querySelectorAll(".section");
+        // ---------- SCROLL REVEAL (Intersection Observer) ----------
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
 
-    links.forEach(link => {
-      link.addEventListener("click", function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute("href").substring(1);
+        // ---------- SKILLS PROGRESS BAR ANIMATION ----------
+        const progressFills = document.querySelectorAll('.progress-fill');
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target;
+                    const width = fill.getAttribute('data-width');
+                    fill.style.width = width + '%';
+                }
+            });
+        }, { threshold: 0.3 });
+        progressFills.forEach(el => progressObserver.observe(el));
 
-        sections.forEach(sec => sec.classList.remove("active"));
-        document.getElementById(targetId).classList.add("active");
+        // ---------- DOWNLOAD CV BUTTON (simulated) ----------
+        const downloadBtn = document.getElementById('downloadCVBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('📄 Downloading CV (simulated) — Rodgers Owino CV.pdf');
+                // In a real scenario, you would trigger a file download.
+            });
+        }
 
-        links.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
-      });
-    });
-  </script>
+        // ---------- CONTACT FORM (prevent default & feedback) ----------
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('✅ Thank you, Rodgers will get back to you soon!');
+                this.reset();
+            });
+        }
+
+        // ---------- (optional) set initial progress to 0, then animate on load for visible skills ----------
+        // set all fills to 0 initially, then observer triggers when visible.
+        progressFills.forEach(fill => { fill.style.width = '0%'; });
+        // if any skill is already visible on load, trigger observer manually
+        window.addEventListener('load', function() {
+            progressFills.forEach(fill => {
+                const rect = fill.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 80) {
+                    const width = fill.getAttribute('data-width');
+                    fill.style.width = width + '%';
+                }
+            });
+            // also reveal any visible .reveal elements
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 80) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+
+    })();
+</script>
+
 </body>
 </html>
