@@ -517,9 +517,10 @@
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
                     <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Hire Me</a>
-<a href="Rodgers_Owino_CV.pdf" download="Rodgers_Owino_CV.pdf" class="btn btn-download" id="downloadCVBtn">
-    <i class="fas fa-download"></i> Download CV
-</a>                </div>
+<a href="#" onclick="window.print(); return false;" class="btn btn-download" id="downloadCVBtn">
+    <i class="fas fa-print"></i> Save as PDF / Print
+</a>
+                </div>
             </div>
             <div class="hero-image animate-on-scroll delay-2">
                 <div class="avatar-circle">
@@ -725,12 +726,12 @@
         //         // In a real scenario, you would trigger a file download.
         //     });
         // }
-        // ---------- DOWNLOAD CV BUTTON  ----------
+ // ---------- PRINT / SAVE AS PDF BUTTON ----------
 const downloadBtn = document.getElementById('downloadCVBtn');
 if (downloadBtn) {
     downloadBtn.addEventListener('click', function(e) {
-        // Removed e.preventDefault() and the alert so the download works!
-        console.log('CV download initiated.');
+        e.preventDefault();
+        window.print();
     });
 }
 
