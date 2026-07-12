@@ -727,15 +727,14 @@
         //         // In a real scenario, you would trigger a file download.
         //     });
         // }
- // ---------- PRINT / SAVE AS PDF BUTTON ----------
+// ---------- DOWNLOAD CV BUTTON  ----------
 const downloadBtn = document.getElementById('downloadCVBtn');
 if (downloadBtn) {
     downloadBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.print();
+        // Removed e.preventDefault() and the alert so the download works!
+        console.log('CV download initiated.');
     });
 }
-
 
         // ---------- CONTACT FORM (prevent default & feedback) ----------
         const contactForm = document.getElementById('contactForm');
