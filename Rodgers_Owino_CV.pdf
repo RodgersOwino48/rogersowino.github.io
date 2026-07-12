@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodgers Owino - CV Preview</title>
+    <style>
+        /* Base styles and layout */
+        body {
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Action / Download Section */
+        .action-bar {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            text-align: right;
+        }
+        .download-btn {
+            background-color: #007acc;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background 0.2s ease;
+        }
+        .download-btn:hover {
+            background-color: #005999;
+        }
+
+        /* CV Sheet Simulation */
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .cv-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .cv-header h1 {
+            font-size: 2.4rem;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+            color: #111;
+        }
+        .cv-subtitle {
+            font-size: 1.15rem;
+            color: #555;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+        .cv-contact {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+        }
+        .cv-contact a {
+            color: #007acc;
+            text-decoration: none;
+        }
+        .cv-contact a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #e0e0e0;
+            margin: 20px 0;
+        }
+        .cv-section {
+            margin-bottom: 25px;
+        }
+        .cv-section h2 {
+            font-size: 1.35rem;
+            color: #007acc;
+            border-bottom: 2px solid #ececec;
+            padding-bottom: 5px;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .skills-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            padding-left: 20px;
+            margin: 0;
+        }
+        .skills-list li {
+            margin-bottom: 4px;
+        }
+        .job, .project, .edu-item {
+            margin-bottom: 20px;
+        }
+        .job h3, .project h3, .edu-item h3 {
+            margin: 0 0 3px 0;
+            font-size: 1.15rem;
+            color: #222;
+        }
+        .job-company, .project-role, .edu-meta {
+            margin: 0 0 10px 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .job ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .job li {
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP DOWNLOAD BAR FOR RECRUITERS -->
+    <div class="action-bar">
+        <a href="Rodgers_Owino_CV.pdf" download="Rodgers_Owino_CV.pdf" id="downloadCVBtn" class="download-btn">
+            📥 Download PDF Version
+        </a>
+    </div>
+
+    <!-- MAIN CV BLOCK -->
+    <div class="cv-container">
+        
+        <header class="cv-header">
+            <h1>RODGERS OWINO</h1>
+            <p class="cv-subtitle">Data Analyst | IT Technician | Data Science Professional</p>
+            <p class="cv-contact">
+                📍 Nairobi, Kenya | 📞 +254 710 908 348 / +254 753 484 666 <br>
+                📧 <a href="mailto:rodgersowino48@gmail.com">rodgersowino48@gmail.com</a> | 
+                🔗 <a href="https://linkedin.com/in/RodgersOwino" target="_blank">linkedin.com/in/RodgersOwino</a> | 
+                💻 <a href="https://github.com/RodgersOwino48
+RodgersOwino48" target="_blank">github.com/RodgersOwino48</a>
+            </p>
+        </header>
+
+        <hr>
+
+        <section class="cv-section">
+            <h2>Professional Profile</h2>
+            <p style="margin: 0;">Results-driven Data Analyst, IT Technician, and current Data Science professional with hands-on technical experience optimizing enterprise systems and business intelligence within manufacturing and supply chain environments. Proven track record in relational database design (MySQL), predictive analytics, system architecture modeling, and custom Power BI dashboard development. Combines deep operational knowledge of ERP workflows with technical expertise in data preprocessing and predictive modeling to drive digital transformation, process automation, and data-backed corporate strategy.</p>
+        </section>
+
+        <section class="cv-section">
+            <h2>Core Technical Skills</h2>
+            <ul class="skills-list">
+                <li><strong>Data Analytics & BI:</strong> Power BI (Advanced DAX, Custom Dark-Mode Dashboards), Advanced Excel (Power Query, Data Integration)</li>
+                <li><strong>Data Science & Modeling:</strong> Predictive Analytics, Regression-Based Forecasting, Data Preprocessing, Machine Learning Methodologies</li>
+                <li><strong>Database & Systems:</strong> MySQL (Relational Schema Design, Complex Queries, DBMS), ERP Systems Support & Administration</li>
+                <li><strong>Software & Systems Design:</strong> System Architecture Documentation, Workflow Automation, Software Installation & End-User IT Support</li>
+                <li><strong>Web Development:</strong> Front-End Web Development (Responsive HTML5, CSS3, JavaScript UI Components)</li>
+                <li><strong>Tools & Environments:</strong> Python, Jupyter Notebook, GitHub, Visual Paradigm, Microsoft Office Suite</li>
+            </ul>
+        </section>
+
+        <section class="cv-section">
+            <h2>Professional Experience</h2>
+            <div class="job">
+                <h3>Data Clerk / Systems & Analytics Support</h3>
+                <p class="job-company"><strong>Kenpoly Manufacturing Limited</strong> | <em>December 2023 – Present</em></p>
+                <ul>
+                    <li><strong>Corporate Transformation:</strong> Selected as a core participant in the internal corporate transformation initiative, contributing technical data insights to streamline plant-wide operations.</li>
+                    <li><strong>Data Integration & Analytics:</strong> Executed critical data integration tasks to append multi-source sales datasets; troubleshooted database connection issues and resolved data-type discrepancies between Power BI and Excel.</li>
+                    <li><strong>Business Intelligence:</strong> Architected and deployed functional Power BI operational analytics templates to support executive decision-making.</li>
+                    <li><strong>ERP & System Support:</strong> Supervised daily ERP system integrity, troubleshooting software and data entry bottlenecks in coordination with IT and Operations departments.</li>
+                    <li><strong>Process Automation:</strong> Spearheaded workflow automation and digitized legacy record structures, driving a 25% increase in cross-departmental operational efficiency.</li>
+                    <li><strong>Recognition:</strong> Awarded <strong>Employer of the Month (April 2024)</strong> for exceptional consistency, data accuracy, and proactive system support excellence.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2>Technical & Academic Projects</h2>
+            
+            <div class="project">
+                <h3>Pharmaceutical Product Demand Forecasting System (Academic Project)</h3>
+                <p class="project-role"><em>Lead System Architect & Data Analyst – Zetech University</em></p>
+                <p style="margin: 0;">Formulated comprehensive system design, architecture documentation, and relational database schemas using Visual Paradigm. Implemented regression-based predictive analysis models to forecast procurement requirements and optimize hospital supply chains.</p>
+            </div>
+
+            <div class="project" style="margin-top: 15px;">
+                <h3>Assistant Dispatch Coordinator Dashboard (Personal Project)</h3>
+                <p class="project-role"><em>Business Intelligence Developer</em></p>
+                <p style="margin: 0;">Engineered a custom, dark-mode Power BI dashboard tracking real-time delivery logistics and fleet optimization metrics. Embedded advanced DAX measures, configured custom predictive parameters, and resolved data-type transformation errors during backend spreadsheet integration.</p>
+            </div>
+
+            <div class="project" style="margin-top: 15px;">
+                <h3>Responsive Professional Portfolio Site (Personal Project)</h3>
+                <p class="project-role"><em>Front-End Developer</em></p>
+                <p style="margin: 0;">Designed, coded, and deployed a responsive personal portfolio website hosted on GitHub. Clean separation of concerns using optimized HTML5 semantic structures and custom CSS3 layouts.</p>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2>Education</h2>
+            <div class="edu-item">
+                <h3>Diploma in Data Science and Analytics</h3>
+                <p class="edu-meta"><strong>Zetech University</strong> | <em>May 2025 – Present</em></p>
+                <p style="margin: 0;">Core Focus: Predictive Analytics, Cloud Computing Security, Database Management Systems, Machine Learning Models, and Advanced Statistics.</p>
+            </div>
+            <div class="edu-item" style="margin-top: 15px;">
+                <h3>Diploma in Information Communication Technology (ICT)</h3>
+                <p class="edu-meta"><strong>Summit Institute of Technology</strong> | <em>January 2022 – November 2024</em></p>
+                <p style="margin: 0;">Core Focus: Computer Systems, Networking Fundamentals, Object-Oriented Programming, and Database Administration.</p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
