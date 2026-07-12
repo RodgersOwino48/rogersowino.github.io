@@ -483,6 +483,141 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* ---------- PERFECT PRINT STYLING FOR CV GENERATION ---------- */
+@media print {
+    /* Hide non-CV website navigation and interactive UI element blocks */
+    header, 
+    .hamburger, 
+    #hamburger,
+    .nav-links, 
+    .btn, 
+    #contact, 
+    footer,
+    .fas.fa-quote-right,
+    blockquote + span {
+        display: none !important;
+    }
+
+    /* Reset global canvas layout for white paper printing */
+    body {
+        background: #ffffff !important;
+        color: #111111 !important;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .section {
+        padding: 1.5rem 0 !important;
+        page-break-inside: avoid;
+        border-bottom: 1px solid #ddd !important;
+    }
+
+    /* Convert Hero elements into a professional top resume header layout */
+    .hero {
+        min-height: auto !important;
+        padding-top: 0 !important;
+    }
+
+    .hero-grid {
+        display: block !important;
+        text-align: left !important;
+    }
+
+    .hero-content h1 {
+        font-size: 28pt !important;
+        color: #000000 !important;
+    }
+
+    .hero-content h1 span {
+        -webkit-text-fill-color: #000000 !important;
+        color: #000000 !important;
+    }
+
+    .hero-sub {
+        font-size: 14pt !important;
+        color: #333333 !important;
+        border-left: 3px solid #1a5fff !important;
+        margin: 0.5rem 0 !important;
+    }
+
+    .hero-badge {
+        margin-top: 0.5rem !important;
+        color: #555555 !important;
+    }
+
+    /* Force visibility on animations/reveals to instantly populate the sheet layout */
+    .reveal, .animate-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Hide decorative graphical avatars */
+    .hero-image, .avatar-circle {
+        display: none !important;
+    }
+
+    /* Restructure side blocks into clean, flat descriptive modules */
+    .about-wrap {
+        display: block !important;
+    }
+
+    .about-wrap div[style*="radial-gradient"] {
+        background: #f8fafd !important;
+        border: 1px solid #d0e0ff !important;
+        color: #111111 !important;
+        padding: 1rem !important;
+        margin-top: 1rem;
+        border-radius: 8px !important;
+    }
+
+    .about-text p {
+        color: #222222 !important;
+    }
+
+    .about-highlight div {
+        background: #f0f4fa !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #333333 !important;
+    }
+
+    /* Flatten grid items onto standard vertical sections */
+    .skills-grid, .projects-grid, .edu-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .project-card, .edu-item {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        color: #111111 !important;
+        padding: 1rem !important;
+        box-shadow: none !important;
+        transform: none !important;
+        border-radius: 8px !important;
+    }
+
+    .project-card p, .edu-item p {
+        color: #444444 !important;
+    }
+
+    .project-tag {
+        background: #f1f5f9 !important;
+        color: #334155 !important;
+        border: 1px solid #cbd5e1 !important;
+    }
+
+    /* Force the browser rendering engine to load colors accurately inside layout previews */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
     </style>
 </head>
 <body>
